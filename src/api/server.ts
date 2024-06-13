@@ -14,26 +14,26 @@ import axios from 'axios'
 
  export async function createSurvivor(data: Survivor){
     console.log(data);
-    const response = await axios.post("http://127.0.0.1:8000/api/survivors/", data)
+    const response = await axios.post("https://zombie-back-production.up.railway.app/api/survivors/", data)
     console.log(response);
     
     return response
 }
 
 export async function getSurvivors(){
-   const response = await axios.get("http://127.0.0.1:8000/api/survivors/")
+   const response = await axios.get("https://zombie-back-production.up.railway.app/api/survivors/")
    return response
 }
 
 export async function updateItems(dataSelected: any, dataTrade: any, idSelected: any, idTrade: any){
-   const updateSurvivorSelected = await axios.patch(`http://127.0.0.1:8000/api/survivors/${idSelected}/`, {'items':dataSelected})
-   const updateSurvivorTrade = await axios.patch(`http://127.0.0.1:8000/api/survivors/${idTrade}/`, {'items': dataTrade})
+   const updateSurvivorSelected = await axios.patch(`https://zombie-back-production.up.railway.app/api/survivors/${idSelected}/`, {'items':dataSelected})
+   const updateSurvivorTrade = await axios.patch(`https://zombie-back-production.up.railway.app/api/survivors/${idTrade}/`, {'items': dataTrade})
    return {updateSurvivorSelected, updateSurvivorTrade}
 }
 
 export async function getStatistics(){
    try {
-      const response = await axios.get("http://127.0.0.1:8000/api/survivors/infection_stats/")
+      const response = await axios.get("https://zombie-back-production.up.railway.app/api/survivors/infection_stats/")
       return response;
     } catch (error) {
       console.error('Error fetching infection stats:', error);
@@ -42,11 +42,11 @@ export async function getStatistics(){
 }
 
 export async function markInfected(id: any){
-   const response = await axios.patch(`http://127.0.0.1:8000/api/survivors/${id}/`, {'is_infected': true})
+   const response = await axios.patch(`https://zombie-back-production.up.railway.app/api/survivors/${id}/`, {'is_infected': true})
    return response
 }
 
 export async function update_location(id: any, longitude: any, latitude: any){
-   const response = await axios.patch(`http://127.0.0.1:8000/api/survivors/${id}/`, {latitude, longitude})
+   const response = await axios.patch(`https://zombie-back-production.up.railway.app/api/survivors/${id}/`, {latitude, longitude})
    return response
 }

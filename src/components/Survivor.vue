@@ -10,7 +10,7 @@
   import { ref, computed, onMounted, onUnmounted, watch } from 'vue';
   import { useWindowSize } from '@vueuse/core';
   import { FBXLoader } from 'three/addons/loaders/FBXLoader.js';
-  import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+  import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
   import EventBus from '../events/eventBus';
   import { getStatistics } from '../api/server';
   import { update_location } from '../api/server';
@@ -65,8 +65,8 @@
       fbx.userData.id = id
       fbx.userData.clock = new THREE.Clock();
       fbx.userData.controls = controls 
-      fbx.position.x = longitude
-      fbx.position.z = latitude
+      longitude ? fbx.position.x = longitude : null
+      latitude ? fbx.position.z = latitude : null
       scene.add(fbx);
   
       const animLoader = new FBXLoader();
